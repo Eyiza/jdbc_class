@@ -1,6 +1,7 @@
 package lytebank.repository;
 
 import lytebank.exceptions.AccountNotFoundException;
+import lytebank.exceptions.AccountUpdateFailedException;
 import lytebank.model.Account;
 
 import java.math.BigDecimal;
@@ -39,7 +40,7 @@ public class AccountRepository {
             preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new AccountNotFoundException(e.getMessage());
+            throw new AccountUpdateFailedException(e.getMessage());
         }
     }
 }
