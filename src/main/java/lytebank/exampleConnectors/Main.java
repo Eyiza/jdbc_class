@@ -1,4 +1,4 @@
-package dreamdev.moniepoint;
+package lytebank.exampleConnectors;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
