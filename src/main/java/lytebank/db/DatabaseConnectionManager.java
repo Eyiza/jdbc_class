@@ -26,7 +26,9 @@ public class DatabaseConnectionManager {
             String password = "admin";
 
             if (connection == null || connection.isClosed()) {
-                return this.connection = DriverManager.getConnection(url, username, password);
+                connection = DriverManager.getConnection(url, username, password);
+                connection.setAutoCommit(false); // To enable transactions
+                return connection;
             }
             return connection;
         } catch (SQLException e) {

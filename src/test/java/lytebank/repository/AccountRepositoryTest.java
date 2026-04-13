@@ -17,6 +17,7 @@ public class AccountRepositoryTest {
         Integer id = 1;
         Connection connection = DatabaseConnectionManager.getInstance().getDatabaseConnection();
         AccountRepository accountRepository = new AccountRepository();
+        accountRepository.updateAccount(connection, 1, new BigDecimal("1000.00"));
         Optional<Account> foundAccount = accountRepository.findById(connection, id);
         Account account = foundAccount.orElseThrow(() -> new AccountNotFoundException("Account not found"));
 

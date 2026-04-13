@@ -6,4 +6,8 @@ CREATE TABLE `accounts`(
 );
 
 INSERT INTO accounts(balance)
-VALUES (1000);
+VALUES
+    (9000),
+    (1000);
+
+SELECT * FROM accounts;
