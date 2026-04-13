@@ -36,6 +36,6 @@ public class DatabaseConnectionManagerTest {
 
         assertNotNull(dbConnection);
         assertNotNull(connection);
-        assertEquals(dbConnection, connection);
+        assertSame(dbConnection, connection);
     }
 }
