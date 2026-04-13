@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnectionManager {
+    private Connection connection;
+
     private DatabaseConnectionManager() {}
 
     private static final class SingletonHolder {
@@ -23,7 +25,10 @@ public class DatabaseConnectionManager {
             String username = "root";
             String password = "admin";
 
-            return DriverManager.getConnection(url, username, password);
+            if (connection == null || connection.isClosed()) {
+                return this.connection = DriverManager.getConnection(url, username, password);
+            }
+            return connection;
         } catch (SQLException e) {
             throw new DatabaseConnectionFailureException(e.getMessage());
         }

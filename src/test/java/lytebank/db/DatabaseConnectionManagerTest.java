@@ -29,12 +29,13 @@ public class DatabaseConnectionManagerTest {
         }
     }
 
+    @Test
+    void databaseConnectionManagerIsSingletonTest(){
+        Connection dbConnection = DatabaseConnectionManager.getInstance().getDatabaseConnection();
+        Connection connection = DatabaseConnectionManager.getInstance().getDatabaseConnection();
 
-//    void databaseConnectionManagerIsSingletonTest(){
-//        Connection dbConnection = DatabaseConnectionManager.getInstance().getDatabaseConnection();
-//        Connection connection = DatabaseConnectionManager.getInstance().getDatabaseConnection();
-//
-//        assertNotNull(dbConnection);
-//        assertTrue(dbConnection.isValid(3));
-//    }
+        assertNotNull(dbConnection);
+        assertNotNull(connection);
+        assertEquals(dbConnection, connection);
+    }
 }
